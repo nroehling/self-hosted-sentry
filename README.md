@@ -85,14 +85,14 @@ Starting with the 22.10.0 release in October, we will require those running the 
 
 #### Cleanup
 We log into our server. Sentry was running in docker. We went to the docker folder ran this
-docker-compose exec worker bash
+`docker compose exec worker bash`
 After that from the worker bash we ran
-sentry cleanup --days 30
+`sentry cleanup --days 30`
 basically this will clean up all the events data before 30 days.
 
 After this we go inside of the database by running these
 
-docker-compose exec postgres bash
-psql -U postgres
-VACUUM FULL; Point to be noted, VACUUM FULL; will lock your db tables unless the full vacuum is being done.
+`docker compose exec postgres bash`
+`psql -U postgres`
+`VACUUM FULL;` Point to be noted, VACUUM FULL; will lock your db tables unless the full vacuum is being done.
 Voila! Database and hard driver storage cleaned up! :)
